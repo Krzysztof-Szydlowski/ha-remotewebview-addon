@@ -1,0 +1,26 @@
+name: "RemoteWebView Server"
+version: "1.0.0"
+slug: "remotewebview"
+description: "Streams Home Assistant dashboards to ESP32-S3 displays using RemoteWebView."
+arch:
+  - aarch64
+  - amd64
+  - armv7
+  - armhf
+  - i386
+startup: services
+boot: auto
+options:
+  render_url: "http://homeassistant.local:8123/lovelace/0"
+  width: 800
+  height: 480
+schema:
+  render_url: str
+  width: int
+  height: int
+ports:
+  8080/tcp: 8080
+ports_description:
+  8080/tcp: "RemoteWebView streaming port"
+webui: "http://[HOST]:[PORT:8080]/"
+image: "ghcr.io/strange-v/remote-webview-server"
